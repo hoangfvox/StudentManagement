@@ -141,7 +141,7 @@ public class Truong implements ITruong {
       clrscr();
       sinhvien = new ArrayList<SinhVien>();
       DocFileSV();
-      System.out.println("-----LUA CHON-----");
+      System.out.println("-----STUDENT MANAGEMENT-----");
       System.out.println("1. Them sinh vien");
       System.out.println("2. Xuat thong tin sinh vien");
       System.out.println("3. Chinh sua thong tin sinh vien");
