@@ -1,5 +1,7 @@
 public interface ITruong {
-  void NhapSV();
+  void DocFileSV();
+  void GhiFileSV();
+  void NhapThemSV();
   void XuatSV();
   void SuaSV();
   void XoaSV();

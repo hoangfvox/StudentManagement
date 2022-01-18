@@ -1,3 +1,8 @@
+import java.io.DataOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -19,11 +24,10 @@ public class SinhVien extends Nguoi {
     return chuyenNganh;
   }
   @Override
-  public void Nhap(Scanner fileIn) {
+  public void Doc(Scanner fileIn) {
     boolean done = false;
     while (!done) {
       try {
-        System.out.print("Nhap ten: ");
         ten = fileIn.nextLine();
         done = true;
       } catch (InputMismatchException e) {
@@ -34,7 +38,6 @@ public class SinhVien extends Nguoi {
     done = false;
     while (!done) {
       try {
-        System.out.print("Nhap tuoi: ");
         tuoi = fileIn.nextInt();
         fileIn.nextLine();
         done = true;
@@ -46,13 +49,11 @@ public class SinhVien extends Nguoi {
     done = false;
     while (!done) {
       try {
-        System.out.print("Nhap ma: ");
         ma = fileIn.nextInt();
         fileIn.nextLine();
         if (ma < 1000000 || ma > 9999999) throw new Exception("Invalid ma!!");
         done = true;
       } catch (InputMismatchException e) {
-        fileIn.nextLine();
         System.out.println("Invalid ma!!");
       } catch (Exception e) {
         fileIn.nextLine();
@@ -62,7 +63,6 @@ public class SinhVien extends Nguoi {
     done = false;
     while (!done) {
       try {
-        System.out.print("Nhap chuyen nganh: ");
         chuyenNganh = fileIn.nextLine();
         done = true;
       } catch (InputMismatchException e) {
@@ -73,7 +73,6 @@ public class SinhVien extends Nguoi {
     done = false;
     while (!done) {
       try {
-        System.out.print("Nhap nien khoa: ");
         nienKhoa = fileIn.nextInt();
         fileIn.nextLine();
         if (nienKhoa < 1900 || nienKhoa > 2030) throw new Exception("Invalid nien khoa!!");
@@ -85,6 +84,92 @@ public class SinhVien extends Nguoi {
         System.out.println(e.getMessage());
       }
     }  
+  }
+  @Override
+  public void Nhap(Scanner scanner) {
+    boolean done = false;
+    while (!done) {
+      try {
+        System.out.print("Nhap ten: ");
+        ten = scanner.nextLine();
+        done = true;
+      } catch (InputMismatchException e) {
+        scanner.nextLine();
+        System.out.println("Invalid ten!!");
+      }
+    }
+    done = false;
+    while (!done) {
+      try {
+        System.out.print("Nhap tuoi: ");
+        tuoi = scanner.nextInt();
+        scanner.nextLine();
+        done = true;
+      } catch (InputMismatchException e) {
+        scanner.nextLine();
+        System.out.println("Invalid tuoi!!");
+      }
+    }
+    done = false;
+    while (!done) {
+      try {
+        System.out.print("Nhap ma: ");
+        ma = scanner.nextInt();
+        scanner.nextLine();
+        if (ma < 1000000 || ma > 9999999) throw new Exception("Invalid ma!!");
+        done = true;
+      } catch (InputMismatchException e) {
+        scanner.nextLine();
+        System.out.println("Invalid ma!!");
+      } catch (Exception e) {
+        scanner.nextLine();
+        System.out.println(e.getMessage());
+      }
+    }
+    done = false;
+    while (!done) {
+      try {
+        System.out.print("Nhap chuyen nganh: ");
+        chuyenNganh = scanner.nextLine();
+        done = true;
+      } catch (InputMismatchException e) {
+        scanner.nextLine();
+        System.out.println("Invalid chuyen nganh!!");
+      }
+    }
+    done = false;
+    while (!done) {
+      try {
+        System.out.print("Nhap nien khoa: ");
+        nienKhoa = scanner.nextInt();
+        scanner.nextLine();
+        if (nienKhoa < 1900 || nienKhoa > 2030) throw new Exception("Invalid nien khoa!!");
+        done = true;
+      } catch (InputMismatchException e) {
+        scanner.nextLine();
+        System.out.println("Invalid nien khoa!!");
+      } catch (Exception e){
+        System.out.println(e.getMessage());
+      }
+    }  
+  }
+  
+  @Override
+  public void Ghi(DataOutputStream fileOut) {
+    try {
+      fileOut.write(ten.getBytes());
+      fileOut.write(System.getProperty("line.separator").getBytes());
+      fileOut.write(String.valueOf(tuoi).getBytes());
+      fileOut.write(System.getProperty("line.separator").getBytes());
+      fileOut.write(String.valueOf(ma).getBytes());
+      fileOut.write(System.getProperty("line.separator").getBytes());
+      fileOut.write(chuyenNganh.getBytes());
+      fileOut.write(System.getProperty("line.separator").getBytes());
+      fileOut.write(String.valueOf(nienKhoa).getBytes());
+      fileOut.write(System.getProperty("line.separator").getBytes());
+    } catch (IOException e) {
+      System.exit(0);
+    }
   }
   @Override
   public void Xuat() {

@@ -1,3 +1,4 @@
+import java.io.DataOutputStream;
 import java.util.Scanner;
 
 public abstract class Nguoi {
@@ -8,6 +9,8 @@ public abstract class Nguoi {
     this.ten = ten;
     this.tuoi = tuoi;
   }
-  public abstract void Nhap(Scanner fileIn);
+  public abstract void Nhap(Scanner scanner);
+  public abstract void Doc(Scanner fileIn);
+  public abstract void Ghi(DataOutputStream fileOut);
   public abstract void Xuat();
 }
